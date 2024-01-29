@@ -1,0 +1,73 @@
+@import "v4/style/style.css";
+
+:root {
+    --player-back: #f6f6f6f6;
+    --player-button: #92929292;
+    --player-black-button: #000000;
+    --player-progress-bar-background: #c3c3c3c3;
+    --player-progress-bar-foreground: #000000;
+
+    --player-progress-bar-height: 4px;
+}
+
+#player {
+    position: fixed;
+    width: 100%;
+    height: clamp(40px, 8vmin, 64px);
+    bottom: 0; left: 0;
+    box-shadow: 0px -3px 4px 0px var(--boxshadow);
+}
+
+@media screen and (max-width: 800px) {
+    #player {
+        height:70px;
+    }
+}
+
+
+.player_progression_bar {
+    width: 100%;
+    height: var(--player-progress-bar-height);
+}
+
+
+#player_progression_bar_background {
+    background-color: var(--player-progress-bar-background);
+    position: relative;
+}
+
+#player_progression_bar_foreground {
+    background-color: var(--player-progress-bar-foreground);
+    position: fixed;
+    width: 20%;
+}
+
+#player_secondary_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 100%;
+    padding-left: 5vw; padding-right: 5vw;
+    background-color: var(--player-back);
+
+}
+.player_secondary_container_element {
+    font-size: clamp(0.4rem, 2vmin, 2rem);
+    width: 20%;
+
+}
+
+#player_music_title {
+    text-align: left;
+    margin-left: 0;
+}
+
+#player_control_button {
+    text-align: center;
+}
+
+#player_time {
+    text-align: right;
+    margin-right: 0;
+}
