@@ -1,3 +1,5 @@
+@import "../style/player.css";
+
 :root {
     --back1: #ffffff;
     --back2: #f5f5f5f5;
@@ -34,8 +36,7 @@ body {
 
 #real_body {
     width: 100%;
-    height: auto;
-    min-height: calc(100vh - var(--header_height));
+    height: calc(100vh - 140px);
     margin: 0;
     padding: 0;
     background-color: var(--back1);

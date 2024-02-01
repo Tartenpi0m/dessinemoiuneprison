@@ -36,51 +36,73 @@
     margin-left: 10%;
     height: 80%;
     width: 80%;
-    margin-top: 10vh;
+    margin-top: 60px; /* 2vh - (padding top - padding bottom)*/
+    box-sizing: border-box;
+    padding-bottom: 4%;
+    padding-top: 4%; 
     background-color: var(--back2);
     box-shadow: 0px 5px 10px 0px var(--boxshadow); 
     white-space: normal;
     text-align: center;
-    padding-bottom: 4vh;
+}
+
+@media screen and (max-width: 800px) {
+    .home_block {
+       height: 90%;
+       margin-top: 30px;
+    }
+    
 }
 
 .h2 {
     margin-left: auto;
     margin-right: auto;
     font-size: var(--font-size-title);
-    padding-top: 4vh; margin-bottom: 4vh;
+    margin-bottom: 4%;
 
 }
 
-.nuance_flag {
+.home_nuance_flag {
     height: clamp(40px, 6vmin, 64px);
+    aspect-ratio: 110/70;
+    border: solid 1px var(--logo_color_3);
     margin: auto;
 
 }
 
 .home_text {
-    height: 50vh;
+    height: 50%;
     overflow-y: scroll;
-    margin-left: 5vw; margin-right: 5vw;
-    margin-top: 4vh; margin-bottom: 4vh;
+    margin-left: 5%; margin-right: 5%;
+    margin-top: 4%; margin-bottom: 4%;
+}
+
+@media screen and (max-width: 800px) {
+    .home_text {
+       height: 80%;
+    }
 }
 
 
 p {
     font-size: var(--font-size-text);
     text-align: justify;
+    overflow: hidden;
 }
 
 .home_dots {
     display: flex;
     justify-content: center;
-    padding-top: 4vh;
 }
 
 .home_dot {
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    background-color: black;
+    background-color: rgb(126, 126, 126);
     margin-left: 5px; margin-right: 5px;
+}
+
+#home_dot_current {
+    background-color: rgb(12, 12, 12);
 }
