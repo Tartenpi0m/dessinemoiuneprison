@@ -8,21 +8,32 @@
     --player-progress-bar-foreground: #000000;
 
     --player-progress-bar-height: 4px;
+    --player-height: clamp(40px, 8vmin, 64px);
+
+    --font-size-player: 1rem;
+    --font-size-icon: 2rem;
+
+
+
+}
+
+@media screen and (max-width: 800px) {
+    :root {
+        --player-height: 70px;
+        --font-size-player: 2rem;
+
+    }
 }
 
 #player {
     position: fixed;
     width: 100%;
-    height: clamp(40px, 8vmin, 64px);
+    height: var(--player-height);
     bottom: 0; left: 0;
     box-shadow: 0px -3px 4px 0px var(--boxshadow);
+    font-size: var(--font-size-player);
 }
 
-@media screen and (max-width: 800px) {
-    #player {
-        height:70px;
-    }
-}
 
 
 .player_progression_bar {
@@ -53,7 +64,7 @@
 
 }
 .player_secondary_container_element {
-    font-size: clamp(0.4rem, 2vmin, 2rem);
+    font-size: clamp(0.7rem, 2vmin, 2rem);
     width: 20%;
 
 }
@@ -61,10 +72,22 @@
 #player_music_title {
     text-align: left;
     margin-left: 0;
-}
+}   
 
 #player_control_button {
     text-align: center;
+    display: flex;
+    justify-content:space-evenly;
+}
+
+@media screen and (max-width: 800px) {
+    #player_control_button {
+        width: 40%;
+    }
+}
+
+.fa-solid {
+    font-size: var(--font-size-icon)
 }
 
 #player_time {

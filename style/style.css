@@ -11,6 +11,13 @@
 
     --header_height: clamp(50px, 10vmin, 80px);
 
+
+}
+
+@media screen and (max-width: 800px) {
+    :root {
+        --header_height: 70px;
+    }
 }
 
 html {
@@ -46,16 +53,11 @@ body {
     justify-content: left;
     align-items: center;
 }
-@media screen and (max-width: 800px) {
-    #header {
-        height:70px;
-    }
-    
-}
+
 
 .h1 {
     display: inline-block;
-    font-size: clamp(2rem, 3vmin, 4rem);
+    font-size: clamp(1.3rem, 3vmin, 4rem);
 }
 
 .nuance_flag {
@@ -74,7 +76,7 @@ body {
     background-color: #9e1414;
     height: 100%;
     width: 25%;
-    margin-right: -4px;
+    margin-right: -5px;
     margin-top: auto; margin-bottom: auto;
 }
 
