@@ -3,7 +3,7 @@
 
 :root {
     --font-size-title: clamp(1.3rem, 3vmin, 4rem);
-    --font-size-text: 1.5rem;
+    --font-size-text: 0.9rem;
 }
 
 @media screen and (max-width: 800px) {
@@ -58,7 +58,7 @@
     margin-left: auto;
     margin-right: auto;
     font-size: var(--font-size-title);
-    margin-bottom: 4%;
+    margin-bottom: 17px;
 
 }
 
