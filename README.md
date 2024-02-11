@@ -5,10 +5,15 @@
 [x] - Header  
 [x] - Player Visual  
 [x] - Homepage visual   
-[] - Add scrollsnap with JS (button and 3dots)  
+[x] - Add scrollsnap with JS (button and 3dots)  
 [x] - Add switchPage in JS  
-[] - Create secondary pages [beggined] 
-[] - Add JS player functionnality  [begginned]
-        + audio functionnality  
-        + switch play/pause icon  
+[x] - Create secondary pages 
+[x] - Add JS player functionnality  [begginned]
+        [x] audio functionnality  
+        [x] switch play/pause icon  
 [] - Remake full CSS
+        [] - Home page
+        [x] - List page
+        [] - detailed page
+        [] - nuance logo
+[] - Create detailed pages

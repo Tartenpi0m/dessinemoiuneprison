@@ -1,50 +1,51 @@
+export function initializePlayer(audioPlayer) {
+    let audioTitle = document.getElementById("player_music_title");
 
-
-window.addEventListener('load', function() {
-    if (!localStorage.getItem("currentMusic")) {
-        // Code to execute if "currentPage" not exists in localStorage
-        localStorage.setItem("currentMusic", "None");
-    }
-
-
-    if (localStorage.getItem("currentMusic") == "None") {
-        console.log("No music");
-        hidePlayer();
-    }
-
-    if (localStorage.getItem("currentMusic") != "None") {
-        const audioPlayer = document.getElementById("audio");
-        showPlayer();
-        audioPlayer.src = "../audio/ " + localStorage.getItem("currentMusic") + ".mp3";
-    }
-});
-
-// Create audio player from element with id "audio"
-const audioPlayer = document.getElementById("audio");
-
-// Add event listener for all <i> elements
-const iElements = document.getElementsByTagName("i");
-for (let i = 0; i < iElements.length; i++) {
-    iElements[i].addEventListener("click", function() {
-        // Code to execute when <i> element is clicked
-    });
+    audioPlayer.src = localStorage.getItem("currentMusic");
+    audioTitle.innerHTML = localStorage.getItem("currentMusicTitle"); 
+    audioPlayer.currentTime = localStorage.getItem(localStorage.getItem("currentMusicTitle") + "_time");  
 }
 
+export function playMusic(audioPlayer) {
+    audioPlayer.play();
+}
 
+export function pauseMusic(audioPlayer) {
+    audioPlayer.pause();
+}
 
+export function forwardMusic(audioPlayer) {
+    audioPlayer.currentTime += 10;
+}
 
+export function backwardMusic(audioPlayer) {
+    audioPlayer.currentTime -= 10;
+}
 
-
-function hidePlayer() {
-    let player = document.getElementById("player")
+export function hidePlayer() {
+    sessionStorage.setItem("PlayerStatus", "hidden");
+    let player = document.getElementById("player");
     player.style.display = "none";
     let realBody = document.getElementById("real_body");
     realBody.style.height = "calc(100vh - 70px)"
 }
 
-function showPlayer() {
+export function showPlayer() {
+    sessionStorage.setItem("PlayerStatus", "visible");
     let player = document.getElementById("player")
     player.style.display = "block";
     let realBody = document.getElementById("real_body");
     realBody.style.height = "calc(100vh - 140px)"
+}
+
+export function convertToHHSS(number) {
+    // Convert number to HH:MM format
+    let hours = Math.floor(number / 60);
+    let minutes = Math.floor(number % 60);
+
+    let formattedHours = String(hours).padStart(2, "0");
+    let formattedMinutes = String(minutes).padStart(2, "0");
+
+    let result = formattedHours + ":" + formattedMinutes;
+    return result;
 }
