@@ -1,3 +1,5 @@
+
+
 window.addEventListener('load', function() {
     if (!localStorage.getItem("currentMusic")) {
         // Code to execute if "currentPage" not exists in localStorage
@@ -8,10 +10,26 @@ window.addEventListener('load', function() {
     if (localStorage.getItem("currentMusic") == "None") {
         console.log("No music");
         hidePlayer();
-        
-        
+    }
+
+    if (localStorage.getItem("currentMusic") != "None") {
+        const audioPlayer = document.getElementById("audio");
+        showPlayer();
+        audioPlayer.src = "../audio/ " + localStorage.getItem("currentMusic") + ".mp3";
     }
 });
+
+// Create audio player from element with id "audio"
+const audioPlayer = document.getElementById("audio");
+
+// Add event listener for all <i> elements
+const iElements = document.getElementsByTagName("i");
+for (let i = 0; i < iElements.length; i++) {
+    iElements[i].addEventListener("click", function() {
+        // Code to execute when <i> element is clicked
+    });
+}
+
 
 
 

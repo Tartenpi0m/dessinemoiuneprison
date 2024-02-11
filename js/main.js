@@ -4,8 +4,14 @@ window.addEventListener('load', function() {
         localStorage.setItem("currentPage", "home");
     }
 
-    loadPage(localStorage.getItem("currentPage"));
+	else {
+		// Code to execute if "currentPage" exists in localStorage
+		//loadPage(localStorage.getItem("currentPage"));
+	}
 
+    //loadPage(localStorage.getItem("currentPage"));
+	//loadPage("home");
+	loadPage("podcasts");
 
 });
 
