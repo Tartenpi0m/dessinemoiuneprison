@@ -25,6 +25,8 @@ async function loadPage(page) {
 
 window.addEventListener('load', function() {
 
+	sessionStorage.setItem("try", "no");
+
 
 
 	// --------PAGE NAVIGATION--------

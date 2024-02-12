@@ -17,3 +17,6 @@
         [] - detailed page
         [] - nuance logo
 [] - Create detailed pages
+[] - Password for access
+        [x] - Functionnality
+        [] - Style (CSS)

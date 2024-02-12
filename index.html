@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../style/style.css" >
+    <title>Nuance de gris</title>
+</head>
+
+<body id="body">
+
+    <p id="warning" style="color:red;"></p>
+
+    <input id="pass_input" type="password" pattern="[0-9]{6}" placeholder="Enter password" required>
+  
+</body>
+
+    <script>
+
+        
+
+        if (!sessionStorage.getItem("try")) {
+            sessionStorage.setItem("try", "no");
+        }
+
+        if (sessionStorage.getItem("try") == "yes") {
+            let warning_el = document.getElementById("warning");
+            warning_el.textContent = "Wrong password";
+        }
+
+        function hash(pass) {
+            var hash = 0,
+            i, chr;
+            if (pass.length === 0) return hash;
+            for (i = 0; i < pass.length; i++) {
+            chr = pass.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+            }
+            return hash;
+        }
+            const passwordInput = document.querySelector("#pass_input");
+            passwordInput.addEventListener('input', () => {
+                if (passwordInput.value.length === 6) {
+                    sessionStorage.setItem("try", "yes");
+                    console.log("try set to : yes");
+                    const hashedPassword = hash(passwordInput.value);
+                    link = "./static/" + hashedPassword + ".html";
+                    window.location.href = link;
+                }
+            });
+            
+        </script>
+    
+
+    </html>
+        
+</body>
+
+</html>
