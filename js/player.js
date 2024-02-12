@@ -1,17 +1,26 @@
 export function initializePlayer(audioPlayer) {
     let audioTitle = document.getElementById("player_music_title");
+    let audioTime = document.getElementById("player_time");
 
     audioPlayer.src = localStorage.getItem("currentMusic");
     audioTitle.innerHTML = localStorage.getItem("currentMusicTitle"); 
-    audioPlayer.currentTime = localStorage.getItem(localStorage.getItem("currentMusicTitle") + "_time");  
+    audioPlayer.currentTime = localStorage.getItem(localStorage.getItem("currentMusicTitle") + "_time"); 
+    let duration = localStorage.getItem(localStorage.getItem("currentMusicTitle") + "_duration");
+    audioTime.innerHTML = convertToHHSS(audioPlayer.currentTime) + " / " + convertToHHSS(duration);
 }
 
 export function playMusic(audioPlayer) {
     audioPlayer.play();
+    let playButton = document.getElementById("play_pause_button");
+    playButton.classList.remove("fa-play");
+	playButton.classList.add("fa-pause");
 }
 
 export function pauseMusic(audioPlayer) {
     audioPlayer.pause();
+    let playButton = document.getElementById("play_pause_button");
+    playButton.classList.remove("fa-pause");
+	playButton.classList.add("fa-play");
 }
 
 export function forwardMusic(audioPlayer) {

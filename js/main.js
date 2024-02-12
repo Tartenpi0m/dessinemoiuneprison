@@ -55,6 +55,7 @@ window.addEventListener('load', function() {
 	if (!localStorage.getItem("currentMusic")) {
         // Code to execute if "currentMusic" not exists in localStorage
         localStorage.setItem("currentMusic", "None");
+		player.hidePlayer();
     }
 
 
@@ -74,12 +75,9 @@ window.addEventListener('load', function() {
 	playButton.addEventListener("click", function() {
 		if (audioPlayer.paused) {
 			player.playMusic(audioPlayer);
-			playButton.classList.remove("fa-play");
-			playButton.classList.add("fa-pause");
+			
 		} else {
 			player.pauseMusic(audioPlayer);
-			playButton.classList.remove("fa-pause");
-			playButton.classList.add("fa-play");
 		}
 	});
 
@@ -101,29 +99,20 @@ window.addEventListener('load', function() {
 
 window.addEventListener('subload_podcasts', function() {
 	const audioPlayer = document.getElementById("audio");
-
-	console.log("subload_podcasts event triggered");
-
 	// Set progress bar width for each card podcast
 	let bars = document.querySelectorAll(".podcast_time_bar");
 	console.log(bars);
 	bars.forEach(bar => {
-		console.log(bar.title)
 		let audioTitle = bar.getAttribute("title");
-		console.log("Setting bar width for : " + audioTitle);
 		if(localStorage.getItem(audioTitle + "_time")) {
-			console.log("Setting bar width to : " + localStorage.getItem(audioTitle + "_time") / localStorage.getItem(audioTitle + "_duration") * 100 + "%");
 			bar.style.width = localStorage.getItem(audioTitle + "_time") / localStorage.getItem(audioTitle + "_duration") * 100 + "%";
 		}
 	});
 
 	let button_list = document.querySelectorAll(".play_button");
-	console.log("Button list : ");
-	console.log(button_list);
 	button_list.forEach(play_button => {
 		console.log(play_button)
 		play_button.addEventListener("click", function() {
-			console.log("Play button clicked");
 			let audioSource = play_button.getAttribute("src");
 			let audioTitle = play_button.getAttribute("title");
 			console.log("Playing audio from: " + audioSource);
