@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="../style/style.css" >
     <title>Nuance de gris</title>
+    <script src="https://kit.fontawesome.com/8be315dd78.js" crossorigin="anonymous"></script>
 </head>
 
 <body id="body">
@@ -38,7 +39,7 @@
         <div class="keyboard_line">
             <button class="hidden_key"></button>
             <button class="key">0</button>
-            <button class="delete_key" id="delete_key">&lt;</button>
+            <button class="delete_key" id="delete_key"><i class="fa-solid fa-delete-left" id="delete_key_icon"></i></button>
         </div>
         
     </div>
@@ -109,6 +110,15 @@
             visibility: hidden;
         }
 
+        #delete_key {
+            padding-top: 4px;
+            padding-right: 10px;
+        }
+
+        #delete_key_icon {
+            font-size: 1.5rem;
+            
+        }
 
         .key:hover, .delete_key:hover {
             background-color: #e6e6e6;
