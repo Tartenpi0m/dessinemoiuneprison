@@ -60,7 +60,7 @@ window.addEventListener('load', function() {
 
 
     if (localStorage.getItem("currentMusic") == "None") {
-        console.log("No music");
+        console.log("No music selected. Player hidden.");
         player.hidePlayer();
     }
 
@@ -101,7 +101,6 @@ window.addEventListener('subload_podcasts', function() {
 	const audioPlayer = document.getElementById("audio");
 	// Set progress bar width for each card podcast
 	let bars = document.querySelectorAll(".podcast_time_bar");
-	console.log(bars);
 	bars.forEach(bar => {
 		let audioTitle = bar.getAttribute("title");
 		if(localStorage.getItem(audioTitle + "_time")) {
@@ -111,7 +110,6 @@ window.addEventListener('subload_podcasts', function() {
 
 	let button_list = document.querySelectorAll(".play_button");
 	button_list.forEach(play_button => {
-		console.log(play_button)
 		play_button.addEventListener("click", function() {
 			let audioSource = play_button.getAttribute("src");
 			let audioTitle = play_button.getAttribute("title");
@@ -120,12 +118,16 @@ window.addEventListener('subload_podcasts', function() {
 			localStorage.setItem("currentMusicTitle", audioTitle);
 			if (localStorage.getItem(audioTitle + "_time") != null) {
 				audioPlayer.currentTime = localStorage.getItem(audioTitle + "_time");
-				localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+				audioPlayer.onloadedmetadata = function() {
+					localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+				}
 
 			} else {
 				audioPlayer.currentTime = 0;
 				localStorage.setItem(audioTitle + "_time", 0);
-				localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+				audioPlayer.onloadedmetadata = function() {
+					localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+				}
 			}
 			player.initializePlayer(audioPlayer);   
 			if (sessionStorage.getItem("PlayerStatus") == "hidden") player.showPlayer();   
