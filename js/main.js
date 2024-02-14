@@ -137,21 +137,26 @@ window.addEventListener('subload_podcasts', function() {
 
 	// Live time update for progress bar
 	audioPlayer.addEventListener("timeupdate", function() {
-		let progressBar = document.getElementById("player_progression_bar_foreground");
-		let progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-		progressBar.style.width = progress + "%";
-		localStorage.setItem(localStorage.getItem("currentMusicTitle") + "_time", audioPlayer.currentTime);
-
-
-		try {let progressBarCard = document.querySelector(".podcast_time_bar[title='" + localStorage.getItem("currentMusicTitle") + "']");
-		progressBarCard.style.width = progress + "%";}
-		catch (error) {console.log("No podcast bar found for this podcast"); console.log(localStorage.getItem("currentMusicTitle"))}
 		
-
-		let currentTimeElement = document.getElementById("player_time");
 		let currentTime = player.convertToHHSS(audioPlayer.currentTime);
 		let totalTime = player.convertToHHSS(audioPlayer.duration);
-		currentTimeElement.innerHTML = currentTime + " / " + totalTime;
+		if (currentTime !== "NaN:NaN" && totalTime !== "NaN:NaN") {
+			let currentTimeElement = document.getElementById("player_time");
+			currentTimeElement.innerHTML = (currentTime + " / " + totalTime).toString();
+
+			let progressBar = document.getElementById("player_progression_bar_foreground");
+			let progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+			progressBar.style.width = progress + "%";
+			localStorage.setItem(localStorage.getItem("currentMusicTitle") + "_time", audioPlayer.currentTime);
+
+
+			try {let progressBarCard = document.querySelector(".podcast_time_bar[title='" + localStorage.getItem("currentMusicTitle") + "']");
+			progressBarCard.style.width = progress + "%";}
+			catch (error) {console.log("No podcast bar found for this podcast"); console.log(localStorage.getItem("currentMusicTitle"))}
+		
+
+		}
+		
 
 	})
 })

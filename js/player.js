@@ -1,12 +1,18 @@
 export function initializePlayer(audioPlayer) {
     let audioTitle = document.getElementById("player_music_title");
     let audioTime = document.getElementById("player_time");
-
-    audioPlayer.src = localStorage.getItem("currentMusic");
-    audioTitle.innerHTML = localStorage.getItem("currentMusicTitle"); 
-    audioPlayer.currentTime = localStorage.getItem(localStorage.getItem("currentMusicTitle") + "_time"); 
     let duration = localStorage.getItem(localStorage.getItem("currentMusicTitle") + "_duration");
+    let progressBar = document.getElementById("player_progression_bar_foreground");
+    let progress = (audioPlayer.currentTime / duration) * 100;
+
+    audioTitle.innerHTML = localStorage.getItem("currentMusicTitle"); 
+    audioPlayer.src = localStorage.getItem("currentMusic");
+    audioPlayer.currentTime = localStorage.getItem(localStorage.getItem("currentMusicTitle") + "_time"); 
     audioTime.innerHTML = convertToHHSS(audioPlayer.currentTime) + " / " + convertToHHSS(duration);
+    progressBar.style.width = progress + "%";
+
+    console.log("PROGRESS INITIALIZATION : " + progress);
+    
 }
 
 export function playMusic(audioPlayer) {
