@@ -11,10 +11,12 @@
 
     
     
-    <input id="pass_input" type="password" pattern="[0-9]{6}" placeholder="Enter code" required>
+    <div id="pass_input">___ ___</div>
     
-
+    
     <div class="keyboard">
+        <p id="warning" style="color:red;"></p>
+
         <div class="keyboard_line">
             <button class="key">1</button>
             <button class="key">2</button>
@@ -34,25 +36,46 @@
         </div>
         
         <div class="keyboard_line">
+            <button class="hidden_key"></button>
             <button class="key">0</button>
+            <button class="delete_key" id="delete_key">&lt;</button>
         </div>
         
     </div>
     
-    <p id="warning" style="color:red;"></p>
-
+    
 </body>
 
-    <style>
+<style>
+    
+    * {
+        box-sizing: border-box;
+        }
+        
+        #pass_input {
+            margin: auto;
+            margin-top: 100px;
+            width: fit-content;
+            height: fit-content;
+            font-size: 2rem;
+            border: none;
+            letter-spacing: 3px;
+        }
 
-        * {
-            box-sizing: border-box;
+        #warning {
+            position: absolute;
+            margin: auto;
+            top: -40px;
+            width: fit-content;
+            height: fit-content;
+            font-size: 1rem;
+            text-align: center;
         }
 
         .keyboard {
+            position: relative;
             margin:auto;
-            margin-top: 40px;
-            margin-bottom: 40px;
+            margin-top: 70px;
             width: fit-content;
             height: fit-content;
             display: flex;
@@ -60,7 +83,7 @@
             align-items: center;
             justify-content: space-evenly;
         }
-
+        
         .keyboard_line {
             width: 100%;
             height: 25%;
@@ -70,7 +93,7 @@
             justify-content: space-evenly;
         }
 
-        .key {
+        .key, .hidden_key, .delete_key {
             margin: 10px;
             width: 100px;
             height: 100px;
@@ -82,29 +105,34 @@
             cursor: pointer;
         }
 
-        .key:hover {
+        .hidden_key {
+            visibility: hidden;
+        }
+
+
+        .key:hover, .delete_key:hover {
             background-color: #e6e6e6;
         }
 
-        #pass_input {
-            margin: auto;
-            width: fit-content;
-            height: fit-content;
-            font-size: 2rem;
-            border: none;
-        }
 
-        #warning {
-            margin: auto;
-            width: fit-content;
-            height: fit-content;
-            font-size: 1rem;
-            text-align: center;
-        }
 
     </style>
 
     <script>
+
+        var counter = 0;
+        var password = "";
+
+        var password_length = 0;
+        var space_number = 0;
+        let initial_input_value = document.querySelector("#pass_input").textContent;
+        for (let i = 0; i < initial_input_value.length; i++) {
+            if (initial_input_value[i] == " ") space_number++;
+            if (initial_input_value[i] == "_") password_length++;
+        }
+
+    
+        console.log("counter : " + counter);
 
         
 
@@ -128,18 +156,47 @@
             }
             return hash;
         }
-            const passwordInput = document.querySelector("#pass_input");
-            passwordInput.addEventListener('input', () => {
-                if (passwordInput.value.length === 6) {
-                    sessionStorage.setItem("try", "yes");
-                    console.log("try set to : yes");
-                    const hashedPassword = hash(passwordInput.value);
-                    link = "./static/" + hashedPassword + ".html";
-                    window.location.href = link;
+
+        document.querySelectorAll(".key").forEach((key) => {
+            key.addEventListener('click', () => {
+                const passwordInput = document.querySelector("#pass_input");
+                if (counter < (password_length + space_number)) {
+                    let code = passwordInput.textContent.split("");
+                    if (code[counter] == " ") counter++;
+                    code[counter] = '*';//key.textContent;
+                    password += key.textContent;
+                    passwordInput.textContent = code.join("");  
+                    counter++;
+
+                    if (counter === (password_length + space_number)) {
+                        counter = 0;
+                        sessionStorage.setItem("try", "yes");
+                        const hashedPassword = hash(password);
+                        link = "./static/" + hashedPassword + ".html";
+                        window.location.href = link;
+                    }
                 }
             });
+        });
+
+        document.querySelector("#delete_key").addEventListener('click', () => {
+            const passwordInput = document.querySelector("#pass_input");
+
+            if (counter > 0) {
+                let code = passwordInput.textContent.split("");
+                console.log("code[counter] : " + code[counter]);
+                if (code[counter-1] == " ") counter--;
+                code[counter-1] = "_";
+                password = password.slice(0, -1);
+                passwordInput.textContent = code.join("");
+                counter--;
+            }
+        });
+                
+
+       
             
-        </script>
+    </script>
     
 
     </html>
