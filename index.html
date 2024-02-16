@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../style/style.css" >
     <title>Nuance de gris</title>
     <script src="https://kit.fontawesome.com/8be315dd78.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="./static/faveicon.ico">
 </head>
 
 <body id="body">
@@ -135,7 +136,7 @@
 
         var password_length = 0;
         var space_number = 0;
-        let initial_input_value = document.querySelector("#pass_input").textContent;
+        var initial_input_value = document.querySelector("#pass_input").textContent;
         for (let i = 0; i < initial_input_value.length; i++) {
             if (initial_input_value[i] == " ") space_number++;
             if (initial_input_value[i] == "_") password_length++;
@@ -143,17 +144,6 @@
 
     
         console.log("counter : " + counter);
-
-        
-
-        if (!sessionStorage.getItem("try")) {
-            sessionStorage.setItem("try", "no");
-        }
-
-        if (sessionStorage.getItem("try") == "yes") {
-            let warning_el = document.getElementById("warning");
-            warning_el.textContent = "Wrong password";
-        }
 
         function hash(pass) {
             var hash = 0,
@@ -173,7 +163,7 @@
                 if (counter < (password_length + space_number)) {
                     let code = passwordInput.textContent.split("");
                     if (code[counter] == " ") counter++;
-                    code[counter] = '*';//key.textContent;
+                    code[counter] = '*';
                     password += key.textContent;
                     passwordInput.textContent = code.join("");  
                     counter++;
@@ -183,7 +173,20 @@
                         sessionStorage.setItem("try", "yes");
                         const hashedPassword = hash(password);
                         link = "./static/" + hashedPassword + ".html";
-                        window.location.href = link;
+                        
+                        fetch(link)
+                            .then(res => {
+                                if (res.ok) {
+                                    window.location.href = link;
+                                } else {
+                                    let warning_el = document.getElementById("warning");
+                                    warning_el.textContent = "Wrong password";
+                                    passwordInput.textContent = initial_input_value;
+                                }
+                            })
+                            .catch(err => {
+                                console.log("Wrong password");
+                            });
                     }
                 }
             });
@@ -194,7 +197,6 @@
 
             if (counter > 0) {
                 let code = passwordInput.textContent.split("");
-                console.log("code[counter] : " + code[counter]);
                 if (code[counter-1] == " ") counter--;
                 code[counter-1] = "_";
                 password = password.slice(0, -1);
