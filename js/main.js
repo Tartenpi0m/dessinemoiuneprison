@@ -41,8 +41,8 @@ window.addEventListener('load', function() {
 	}
 
     //loadPage(localStorage.getItem("currentPage"));
-	//loadPage("home");
-	loadPage("podcasts");	
+	loadPage("home");
+	//loadPage("podcasts");	
 
 
 
