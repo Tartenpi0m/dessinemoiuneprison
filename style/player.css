@@ -28,7 +28,7 @@
     width: 100%;
     height: var(--player-height);
     bottom: 0; left: 0;
-    box-shadow: 0px -3px 4px 0px var(--boxshadow);
+    box-shadow: 0px -2px 10px 0px var(--boxshadow);
     font-size: var(--font-size-player);
 }
 
@@ -49,6 +49,8 @@
     background-color: var(--player-progress-bar-foreground);
     position: fixed;
     width: 20%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 #player_secondary_container {

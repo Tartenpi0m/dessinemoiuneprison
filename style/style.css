@@ -4,7 +4,7 @@
     --back1: #ffffff;
     --back2: #f5f5f5f5;
 
-    --boxshadow: #676767;
+    --boxshadow: #adadad;
 
     --logo_color_1: #f5f5f5f5;
     --logo_color_2: #e5e5e5e5;
@@ -48,13 +48,26 @@ body {
     width: 100%; 
     height: var(--header_height);
     background-color: var(--back1);
-    box-shadow: 0px 5px 10px 0px var(--boxshadow); 
+    box-shadow: 0px 2px 10px 0px var(--boxshadow); 
 
+    display: flex;
+    justify-content: space-between;
+}
+
+#header_right_container {
     display: flex;
     justify-content: left;
     align-items: center;
 }
 
+#header_menu_button {
+    height: 100%;
+    width: 40px;
+}
+
+.header_menu_item {
+    display: none;
+}
 
 .h1 {
     display: inline-block;
@@ -95,4 +108,14 @@ body {
 
 #nuance_flag_4 {
     background-color: var(--logo_color_4)
+}
+
+
+
+.header_menu {
+    position: absolute;
+    right: 10px;   
+    width: 10px;
+    height: 50px;
+    border: solid 1px var(--boxshadow);
 }

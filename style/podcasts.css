@@ -58,5 +58,5 @@
 .podcast_time_bar {
     background-color: var(--player-progress-bar-foreground);
     height: 4px;
-    width: 10%;
+    width: 0%;
 }
