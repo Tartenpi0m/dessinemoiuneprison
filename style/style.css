@@ -40,10 +40,13 @@ body {
     margin: 0;
     padding: 0;
     background-color: var(--back1);
+    overflow-y: scroll;
+    padding-bottom: 20px;
 }
 
 #header {
     position: fixed;
+    z-index: 10;
     top: 0; left: 0;
     width: 100%; 
     height: var(--header_height);
