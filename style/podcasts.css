@@ -12,7 +12,12 @@
     border-top-right-radius: 10px;
     border: solid 1px rgb(227, 228, 227);
     margin-top: 20px;
+    overflow-y: hidden;
 }
+
+
+
+
 
 .podcast_innercard {
     height: 100%;
@@ -47,6 +52,12 @@
 
 .h3 {
     font-size: 1.15rem;
+    margin-bottom: 0px;
+}
+
+.h4 {
+    font-size: 0.7rem;
+    font-style: italic;
     margin-bottom: 10px;
 }
 

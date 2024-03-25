@@ -123,6 +123,23 @@ window.addEventListener('load', function() {
 
 
 window.addEventListener('subload_podcasts', function() {
+
+	// --------CARD BEHAVIOR--------
+	let cards = document.querySelectorAll(".podcast_card");
+	cards.forEach(card => {
+		card.addEventListener('click', () => {
+			if (card.style.height === "120px") {
+				card.style.height = "fit-content";
+				card.querySelector(".podcast_innercard").querySelector(".podcast_content").style.height = "fit-content";
+			} else {
+				card.style.height = "120px";
+				card.querySelector(".podcast_innercard").querySelector(".podcast_content").style.height = "90px";
+			}
+		});
+	});
+
+
+	// --------AUDIO PLAYER--------
 	const audioPlayer = document.getElementById("audio");
 	// Set progress bar width for each card podcast
 	let bars = document.querySelectorAll(".podcast_time_bar");
@@ -168,6 +185,4 @@ window.addEventListener('subload_podcasts', function() {
 		catch (error) {console.log("No podcast bar found for this podcast"); console.log(localStorage.getItem("currentMusicTitle"))}
 	
 	})
-})
-  
-
+});
