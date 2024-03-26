@@ -48,7 +48,7 @@
 #player_progression_bar_foreground {
     background-color: var(--player-progress-bar-foreground);
     position: fixed;
-    width: 20%;
+    width: 0%;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }

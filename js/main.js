@@ -69,8 +69,7 @@ window.addEventListener('load', function() {
 
     if (localStorage.getItem("currentMusic") == "None") {
         console.log("No music selected. Player hidden.");
-        //player.hidePlayer();
-		player.showPlayer();
+        player.hidePlayer();
     }
 
     if (localStorage.getItem("currentMusic") != "None") {

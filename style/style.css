@@ -36,12 +36,12 @@ body {
 
 #real_body {
     width: 100%;
-    height: calc(100vh - 140px);
+    /*height: calc(100vh - 140px);*/
     margin: 0;
     padding: 0;
     background-color: var(--back1);
     overflow-y: scroll;
-    padding-bottom: 20px;
+    padding-bottom: calc(20px + (100vh - 100dvh));
 }
 
 #header {
