@@ -2,6 +2,10 @@
 
 ## TODO
 
+
+- Synchr player and card button
+- Add developpement button to show more text (and solve double click bug)
+
 [x] - Header  
 [x] - Player Visual  
 [x] - Homepage visual   
