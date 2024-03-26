@@ -39,6 +39,7 @@ body {
     /*height: calc(100vh - 140px);*/
     margin: 0;
     padding: 0;
+    padding-bottom: 20px;
     background-color: var(--back1);
     overflow-y: scroll;
 }
@@ -113,8 +114,9 @@ body {
 }
 
 #fake_player {
+    display: block;
     width: 100%;
-    height: var(--player-height);
+    height: calc(var(--player-height));
     opacity: 0;
 }
 
