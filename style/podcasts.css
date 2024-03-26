@@ -7,7 +7,7 @@
     width: 80%;
     height: 120px;
     background-color: var(--back2);
-    box-shadow: 0px 4px 0px 0px var(--player-progress-bar-background);;
+    box-shadow: 0px 4px 0px 0px var(--player-progress-bar-background);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border: solid 1px rgb(227, 228, 227);
@@ -22,8 +22,21 @@
     height: calc(100% - 4px);
     display: flex;
     overflow-y: hidden;
+    position: relative;
 
 }
+
+.podcast_innercard::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    box-shadow: inset 0px -10px 8px 0px var(--back2);
+}
+
+
 .podcast_content {
     margin-top: 20px;
     margin-bottom: 10px;

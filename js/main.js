@@ -22,7 +22,7 @@ async function loadPage(page) {
 }
 
 
-
+// ---------- COMMUN ELEMENTS TO ALL PAGES ------------
 window.addEventListener('load', function() {
 
 	sessionStorage.setItem("try", "no");
@@ -69,11 +69,12 @@ window.addEventListener('load', function() {
 
     if (localStorage.getItem("currentMusic") == "None") {
         console.log("No music selected. Player hidden.");
-        player.hidePlayer();
+        //player.hidePlayer();
+		player.showPlayer();
     }
 
     if (localStorage.getItem("currentMusic") != "None") {
-		console.log("PLayer intialized to : " + localStorage.getItem("currentMusic"));
+		console.log("Player intialized to : " + localStorage.getItem("currentMusic"));
         player.initializePlayer(audioPlayer);
 		player.showPlayer();
     }
@@ -121,7 +122,7 @@ window.addEventListener('load', function() {
 
 
 
-
+///// ------------------ PODCASTS PAGE ------------------ /////
 window.addEventListener('subload_podcasts', function() {
 
 	// --------CARD BEHAVIOR--------
@@ -141,7 +142,9 @@ window.addEventListener('subload_podcasts', function() {
 
 	// --------AUDIO PLAYER--------
 	const audioPlayer = document.getElementById("audio");
-	// Set progress bar width for each card podcast
+
+
+	// Set progress bar width (on page load) for each card podcast (according to local storage)
 	let bars = document.querySelectorAll(".podcast_time_bar");
 	bars.forEach(bar => {
 		let audioTitle = bar.getAttribute("title");
@@ -150,34 +153,110 @@ window.addEventListener('subload_podcasts', function() {
 		}
 	});
 
+	// add event listener to each play button of each cards
 	let button_list = document.querySelectorAll(".play_button");
 	button_list.forEach(play_button => {
-		play_button.addEventListener("click", function() {
+		console.log("Adding event listener to play button : " + play_button.getAttribute("title") + " with source : " + play_button.getAttribute("src"));
+		play_button.addEventListener("click", () => {
+
 			let audioSource = play_button.getAttribute("src");
 			let audioTitle = play_button.getAttribute("title");
-			console.log("Playing audio from: " + audioSource);
-			localStorage.setItem("currentMusic", audioSource);
-			localStorage.setItem("currentMusicTitle", audioTitle);
-			if (localStorage.getItem(audioTitle + "_time") != null) {
-				audioPlayer.currentTime = localStorage.getItem(audioTitle + "_time");
-				audioPlayer.onloadedmetadata = function() {
-					localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+			
+
+			if (localStorage.getItem("currentMusic") == audioSource) {
+				console.log("Same music selected. Play/Pause it.");
+				if (localStorage.getItem("currentlyPlaying") == "true") {
+					player.pauseMusic(audioPlayer);
+					player.setPauseIcon(play_button);
+				} else {
+					player.setPlayIcon(play_button);
+					player.playMusic(audioPlayer);
+				}
+			} else {
+				console.log("Different music selected. Play it.");
+				if (localStorage.getItem("currentlyPlaying") == "true") {
+					console.log("Currently playing another music. Pause it.");
+					player.pauseMusic(audioPlayer);
+
+					//set all other play buttons to pause
+					let buttons = document.querySelectorAll(".play_button");
+					buttons.forEach(button => {
+						console.log("Setting pause icon to : " + button.getAttribute("title"));
+						player.setPauseIcon(button);
+					});
+
 				}
 
-			} else {
-				audioPlayer.currentTime = 0;
-				localStorage.setItem(audioTitle + "_time", 0);
-				audioPlayer.onloadedmetadata = function() {
-					localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+				localStorage.setItem("currentMusic", audioSource);
+				localStorage.setItem("currentMusicTitle", audioTitle);
+
+				player.setPlayIcon(play_button);
+				
+				// Set time from local storage if exists, else set to 0
+				if (localStorage.getItem(audioTitle + "_time") != null) {
+					audioPlayer.currentTime = localStorage.getItem(audioTitle + "_time");
+					audioPlayer.onloadedmetadata = function() {
+						localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+					}
+				} else {
+					audioPlayer.currentTime = 0;
+					localStorage.setItem(audioTitle + "_time", 0);
+					audioPlayer.onloadedmetadata = function() {
+						localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+					}
 				}
+
+				player.initializePlayer(audioPlayer);   
+				if (sessionStorage.getItem("PlayerStatus") == "hidden") player.showPlayer();   
+				player.playMusic(audioPlayer);
+
 			}
-			player.initializePlayer(audioPlayer);   
-			if (sessionStorage.getItem("PlayerStatus") == "hidden") player.showPlayer();   
-			player.playMusic(audioPlayer);
+
+
+			
+			// if (localStorage.getItem("currentlyPlaying") == "true") {
+			// 	if (localStorage.getItem("currentMusic") == audioSource) {
+			// 		audioPlayer.pause();
+			// 		player.setPauseIcon(play_button);
+			// 		localStorage.setItem("currentlyPlaying", false);
+			// 	} else {
+			// 		//set all other play buttons to pause
+			// 		let buttons = document.querySelectorAll(".play_button");
+			// 		buttons.forEach(button => {
+			// 			if (button.getAttribute("src") != audioSource) {
+			// 				audioPlayer.pause();
+			// 				player.setPauseIcon(button);
+			// 			}
+			// 		});
+			// 	}
+				
+			// } else {
+
+			// 	player.setPlayIcon(play_button);
+				
+			// 	if (localStorage.getItem(audioTitle + "_time") != null) {
+			// 		audioPlayer.currentTime = localStorage.getItem(audioTitle + "_time");
+			// 	audioPlayer.onloadedmetadata = function() {
+			// 		localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+			// 	}
+
+			// 	} else {
+			// 		audioPlayer.currentTime = 0;
+			// 		localStorage.setItem(audioTitle + "_time", 0);
+			// 		audioPlayer.onloadedmetadata = function() {
+			// 			localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
+			// 		}
+			// 	}
+			// 	player.initializePlayer(audioPlayer);   
+			// 	if (sessionStorage.getItem("PlayerStatus") == "hidden") player.showPlayer();   
+			// 	player.playMusic(audioPlayer);
+			// }
 		});
 
     });
 
+
+	// Live time update for progress bar (using event listener)
 	audioPlayer.addEventListener('timeupdate', () => {
 		try {let progressBarCard = document.querySelector(".podcast_time_bar[title='" + localStorage.getItem("currentMusicTitle") + "']");
 		let progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
@@ -185,4 +264,4 @@ window.addEventListener('subload_podcasts', function() {
 		catch (error) {console.log("No podcast bar found for this podcast"); console.log(localStorage.getItem("currentMusicTitle"))}
 	
 	})
-});
+})

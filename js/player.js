@@ -14,18 +14,32 @@ export function initializePlayer(audioPlayer) {
     progressBar.style.width = progress + "%";    
 }
 
+
+export function setPlayIcon(button) {
+    button.classList.remove("fa-play");
+    button.classList.add("fa-pause");
+}
+
+export function setPauseIcon(button) {
+    button.classList.remove("fa-pause");
+    button.classList.add("fa-play");
+}
+
+
 export function playMusic(audioPlayer) {
-    audioPlayer.play();
-    let playButton = document.getElementById("play_pause_button");
-    playButton.classList.remove("fa-play");
-	playButton.classList.add("fa-pause");
+    if (localStorage.getItem("currentMusic") != "None") {
+        audioPlayer.play();
+        let playButton = document.getElementById("play_pause_button");
+        setPlayIcon(playButton);
+        localStorage.setItem("currentlyPlaying", true);
+    }
 }
 
 export function pauseMusic(audioPlayer) {
     audioPlayer.pause();
     let playButton = document.getElementById("play_pause_button");
-    playButton.classList.remove("fa-pause");
-	playButton.classList.add("fa-play");
+    setPauseIcon(playButton);
+    localStorage.setItem("currentlyPlaying", false);
 }
 
 export function forwardMusic(audioPlayer) {
