@@ -167,9 +167,7 @@ window.addEventListener('subload_podcasts', function() {
 				console.log("Same music selected. Play/Pause it.");
 				if (localStorage.getItem("currentlyPlaying") == "true") {
 					player.pauseMusic(audioPlayer);
-					player.setPauseIcon(play_button);
 				} else {
-					player.setPlayIcon(play_button);
 					player.playMusic(audioPlayer);
 				}
 			} else {

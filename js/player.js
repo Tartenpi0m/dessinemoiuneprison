@@ -32,6 +32,11 @@ export function playMusic(audioPlayer) {
         let playButton = document.getElementById("play_pause_button");
         setPlayIcon(playButton);
         localStorage.setItem("currentlyPlaying", true);
+
+        if (localStorage.getItem("currentPage") == "podcasts") {
+            let playButton = document.getElementById(localStorage.getItem("currentMusicTitle").toLowerCase() + "_play_button"); 
+            setPlayIcon(playButton);
+        }
     }
 }
 
@@ -40,6 +45,10 @@ export function pauseMusic(audioPlayer) {
     let playButton = document.getElementById("play_pause_button");
     setPauseIcon(playButton);
     localStorage.setItem("currentlyPlaying", false);
+    if (localStorage.getItem("currentPage") == "podcasts") {
+        let playButton = document.getElementById(localStorage.getItem("currentMusicTitle").toLowerCase() + "_play_button");
+        setPauseIcon(playButton);
+    }
 }
 
 export function forwardMusic(audioPlayer) {
