@@ -113,6 +113,12 @@ body {
     background-color: var(--logo_color_4)
 }
 
+#fake_player {
+    width: 100%;
+    height: var(--player-height);
+    opacity: 0;
+}
+
 
 
 .header_menu {

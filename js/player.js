@@ -65,6 +65,9 @@ export function hidePlayer() {
     player.style.display = "none";
     let realBody = document.getElementById("real_body");
     realBody.style.height = "calc(100vh - 70px)"
+
+    let fake_player = document.getElementById("fake_player");
+    fake_player.style.display = "block";
 }
 
 export function showPlayer() {
@@ -73,6 +76,9 @@ export function showPlayer() {
     player.style.display = "block";
     let realBody = document.getElementById("real_body");
     realBody.style.height = "calc(100vh - 140px)"
+
+    let fake_player = document.getElementById("fake_player");
+    fake_player.style.display = "none";
 }
 
 export function convertToHHSS(number) {
