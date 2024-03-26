@@ -41,7 +41,6 @@ body {
     padding: 0;
     background-color: var(--back1);
     overflow-y: scroll;
-    padding-bottom: calc(20px + (100vh - 100dvh));
 }
 
 #header {
