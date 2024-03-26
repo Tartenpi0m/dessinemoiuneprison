@@ -127,14 +127,17 @@ window.addEventListener('subload_podcasts', function() {
 
 	// --------CARD BEHAVIOR--------
 	let cards = document.querySelectorAll(".podcast_card");
+	// transfomr list of card in .querySelector(".podcast_innercard").querySelector(".podcast_content") elements
 	cards.forEach(card => {
-		card.addEventListener('click', () => {
-			if (card.style.height === "120px") {
+		let podcast_content = card.querySelector(".podcast_innercard").querySelector(".podcast_content");
+		podcast_content.addEventListener('click', () => {
+			let cardHeight = window.getComputedStyle(card).height;
+			if (cardHeight === "120px") {
 				card.style.height = "fit-content";
-				card.querySelector(".podcast_innercard").querySelector(".podcast_content").style.height = "fit-content";
+				podcast_content.style.height = "fit-content";
 			} else {
 				card.style.height = "120px";
-				card.querySelector(".podcast_innercard").querySelector(".podcast_content").style.height = "90px";
+				podcast_content.style.height = "90px";
 			}
 		});
 	});
