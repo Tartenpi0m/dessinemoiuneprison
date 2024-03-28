@@ -65,12 +65,14 @@
 }
 .player_secondary_container_element {
     font-size: clamp(0.7rem, 2vmin, 2rem);
-    width: 20%;
-
+    width: 25%;
+    align-items: center;
+    /* aligner vers le bas */
 }
 
 #player_music_title {
     text-align: left;
+    font-size: clamp(1rem, 2vmin, 2rem);
     margin-left: 0;
 }   
 
@@ -78,7 +80,7 @@
     text-align: center;
     display: flex;
     justify-content:space-evenly;
-}
+}   
 
 @media screen and (max-width: 800px) {
     #player_control_button {
@@ -90,7 +92,30 @@
     font-size: var(--font-size-icon)
 }
 
+.rotate_icon {
+    font-size: calc(var(--font-size-icon) * 0.7);
+    position: relative;
+}
+
 #player_time {
     text-align: right;
     margin-right: 0;
+}
+
+
+
+#backward_button::after {
+    content:"15";
+    font-size: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    left: -8px;
+}
+
+#forward_button::after {
+    content:"15";
+    font-size: 0.5rem;
+    position: absolute;
+    bottom: 0;
+    left: 15.5px;
 }

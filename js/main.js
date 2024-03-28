@@ -37,7 +37,7 @@ window.addEventListener('load', function() {
 
 	else {
 		// Code to execute if "currentPage" exists in localStorage
-		//loadPage(localStorage.getItem("currentPage"));
+		loadPage(localStorage.getItem("currentPage"));
 	}
 
     //loadPage(localStorage.getItem("currentPage"));

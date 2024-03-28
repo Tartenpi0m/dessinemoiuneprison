@@ -54,6 +54,7 @@
 
 .podcast_time {
     width: fit-content;
+    font-size: 0.7rem;
     margin: auto;
     color: rgb(87, 87, 87);
 }
@@ -70,14 +71,15 @@
 }
 
 .h4 {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-style: italic;
     margin-bottom: 10px;
 }
 
 .podcast_text {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin-bottom: 10px;
+    text-align: justify;
 }
 
 .podcast_time_bar {
