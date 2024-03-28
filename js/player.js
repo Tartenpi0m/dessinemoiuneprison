@@ -52,11 +52,11 @@ export function pauseMusic(audioPlayer) {
 }
 
 export function forwardMusic(audioPlayer) {
-    audioPlayer.currentTime += 10;
+    audioPlayer.currentTime += 15;
 }
 
 export function backwardMusic(audioPlayer) {
-    audioPlayer.currentTime -= 10;
+    audioPlayer.currentTime -= 15;
 }
 
 export function hidePlayer() {

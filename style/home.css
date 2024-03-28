@@ -53,10 +53,13 @@
     position: relative;
 }
 
-.home_block_icon {
+.home_block_close_button {
     position: absolute;
     top: 0;
     right: 0;
+    font-size: 30px;
+    padding: 10px;
+    color: rgb(117, 117, 117);
 }
 
 .h2 {

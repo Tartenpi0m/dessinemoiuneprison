@@ -22,8 +22,10 @@ async function loadPage(page) {
 }
 
 
+
+
 // ---------- COMMUN ELEMENTS TO ALL PAGES ------------
-window.addEventListener('load', function() {
+window.addEventListener('DOMContentLoaded', function() {
 
 	sessionStorage.setItem("try", "no");
 
@@ -37,7 +39,7 @@ window.addEventListener('load', function() {
 
 	else {
 		// Code to execute if "currentPage" exists in localStorage
-		loadPage(localStorage.getItem("currentPage"));
+		//loadPage(localStorage.getItem("currentPage"));
 	}
 
     //loadPage(localStorage.getItem("currentPage"));
@@ -45,15 +47,34 @@ window.addEventListener('load', function() {
 	//loadPage("podcasts");	
 
 
-	// ----------MENU BUTTON-------------
-	const menuButton = document.querySelector("#header_menu_button");
-	menuButton.addEventListener('click', () => {
-		if (localStorage.getItem("currentPage") === "home") loadPage("podcasts");
-		if (localStorage.getItem("currentPage") == "podcasts") loadPage("home");
+	let menu_item_home = document.querySelector("#menu_item_home");
+	menu_item_home.addEventListener('click', () => {
+		loadPage("home");
 	})
 
+	let menu_item_podcasts = document.querySelector("#menu_item_podcasts");
+	menu_item_podcasts.addEventListener('click', () => {
+		loadPage("podcasts");
+	})
 
+	let menu_item_about = document.querySelector("#menu_item_ressource");
+	menu_item_about.addEventListener('click', () => {
+		loadPage("ressource");
+	})
 
+	// ----------MENU BUTTON-------------
+	let header_menu_button = document.querySelector("#header_menu_button");
+	header_menu_button.addEventListener('click', () => {
+		let header_menu_dev = document.querySelector("#header_menu_dev");
+		if (header_menu_dev.style.display === "flex") {
+			header_menu_dev.style.display = "none";
+		} else {
+			header_menu_dev.style.display = "flex";
+		}
+	})
+
+	
+	
 
 	// --------AUDIO PLAYER--------
 	const audioPlayer = document.getElementById("audio");
@@ -265,3 +286,16 @@ window.addEventListener('subload_podcasts', function() {
 	
 	})
 })
+
+
+
+///// ------------------ HOME PAGE ------------------ /////
+window.addEventListener('subload_home', function() {
+
+	let home_block_close_button = document.querySelectorAll(".home_block_close_button");
+	home_block_close_button.forEach(button => {
+		button.addEventListener('click', () => {
+			loadPage("podcasts")
+		})
+	})
+});

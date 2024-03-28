@@ -65,11 +65,55 @@ body {
 
 #header_menu_button {
     height: 100%;
-    width: 40px;
+    width: 70px;
+    position: relative;
+    z-index: 20;
+}
+#menu_button_icon {
+    z-index: 15;
+    font-size: 20px;
+    position: absolute;
+    top: calc(50% - 10px);
+    left: 55%;
+}
+
+#header_menu_dev {
+    
+    position: absolute;
+    top: calc(var(--header_height) - 19px);
+    right: 15px;
+    width: 160px;
+    height: fit-content;
+    background-color: var(--back1);
+    border-radius: 8px;
+
+    /* display: flex; */
+    flex-direction: column;
+
+    border: solid 1px rgb(227, 228, 227);
+
+    
+
+    box-shadow: 2px 4px 8px 0px var(--boxshadow);
+
+    display: none;
 }
 
 .header_menu_item {
-    display: none;
+    width: 100%;
+    height: 2rem;
+    font-size: 1rem;
+    text-align: left;
+    padding-left: 10px;
+
+    display: flex;
+    align-items: center;
+}
+.header_menu_sep {
+    width: 100%;
+    height: 1px;
+    background-color: rgb(227, 228, 227);
+
 }
 
 .h1 {
