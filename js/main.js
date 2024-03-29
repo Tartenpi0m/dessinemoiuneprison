@@ -42,9 +42,9 @@ window.addEventListener('DOMContentLoaded', function() {
 		//loadPage(localStorage.getItem("currentPage"));
 	}
 
-    //loadPage(localStorage.getItem("currentPage"));
+    loadPage(localStorage.getItem("currentPage"));
 	//loadPage("home");
-	loadPage("podcasts");	
+	//loadPage("podcasts");	
 
 
 	let menu_item_home = document.querySelector("#menu_item_home");
