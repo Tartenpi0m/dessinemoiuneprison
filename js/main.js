@@ -138,6 +138,21 @@ window.addEventListener('DOMContentLoaded', function() {
 		player.backwardMusic(audioPlayer);
 	});
 
+	// Change time by clicking on progress bar
+	let progressBar = document.getElementById("player_progression_bar_background");
+	progressBar.addEventListener("click", function(e) {
+		let rect = progressBar.getBoundingClientRect();
+		let x = e.clientX - rect.left;
+		let width = rect.right - rect.left;
+		let progress = x / width;
+		audioPlayer.currentTime = progress * audioPlayer.duration;
+	});
+
+	// Detect when audio ends
+	audioPlayer.addEventListener("ended", function() {
+		player.pauseMusic(audioPlayer);
+	});
+
 });
 
 
