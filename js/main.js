@@ -43,8 +43,8 @@ window.addEventListener('DOMContentLoaded', function() {
 	}
 
     //loadPage(localStorage.getItem("currentPage"));
-	loadPage("home");
-	//loadPage("podcasts");	
+	//loadPage("home");
+	loadPage("podcasts");	
 
 
 	let menu_item_home = document.querySelector("#menu_item_home");
@@ -149,18 +149,29 @@ window.addEventListener('subload_podcasts', function() {
 	let cards = document.querySelectorAll(".podcast_card");
 	// transfomr list of card in .querySelector(".podcast_innercard").querySelector(".podcast_content") elements
 	cards.forEach(card => {
-		let podcast_content = card.querySelector(".podcast_innercard").querySelector(".podcast_content");
-		podcast_content.addEventListener('click', () => {
+		let podcast_text_info = card.querySelector(".card_upper").querySelector(".podcast_text_info");
+		let card_lower = card.querySelector(".card_lower");
+		
+		podcast_text_info.addEventListener('click', () => {
 			let cardHeight = window.getComputedStyle(card).height;
 			if (cardHeight === "120px") {
 				card.style.height = "fit-content";
-				podcast_content.style.height = "fit-content";
 			} else {
 				card.style.height = "120px";
-				podcast_content.style.height = "90px";
+			}
+		});
+
+		card_lower.addEventListener('click', () => {
+			let cardHeight = window.getComputedStyle(card).height;
+			if (cardHeight === "120px") {
+				card.style.height = "fit-content";
+			} else {
+				card.style.height = "120px";
 			}
 		});
 	});
+
+
 
 
 	// --------AUDIO PLAYER--------
@@ -232,46 +243,6 @@ window.addEventListener('subload_podcasts', function() {
 				player.playMusic(audioPlayer);
 
 			}
-
-
-			
-			// if (localStorage.getItem("currentlyPlaying") == "true") {
-			// 	if (localStorage.getItem("currentMusic") == audioSource) {
-			// 		audioPlayer.pause();
-			// 		player.setPauseIcon(play_button);
-			// 		localStorage.setItem("currentlyPlaying", false);
-			// 	} else {
-			// 		//set all other play buttons to pause
-			// 		let buttons = document.querySelectorAll(".play_button");
-			// 		buttons.forEach(button => {
-			// 			if (button.getAttribute("src") != audioSource) {
-			// 				audioPlayer.pause();
-			// 				player.setPauseIcon(button);
-			// 			}
-			// 		});
-			// 	}
-				
-			// } else {
-
-			// 	player.setPlayIcon(play_button);
-				
-			// 	if (localStorage.getItem(audioTitle + "_time") != null) {
-			// 		audioPlayer.currentTime = localStorage.getItem(audioTitle + "_time");
-			// 	audioPlayer.onloadedmetadata = function() {
-			// 		localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
-			// 	}
-
-			// 	} else {
-			// 		audioPlayer.currentTime = 0;
-			// 		localStorage.setItem(audioTitle + "_time", 0);
-			// 		audioPlayer.onloadedmetadata = function() {
-			// 			localStorage.setItem(audioTitle + "_duration", audioPlayer.duration);
-			// 		}
-			// 	}
-			// 	player.initializePlayer(audioPlayer);   
-			// 	if (sessionStorage.getItem("PlayerStatus") == "hidden") player.showPlayer();   
-			// 	player.playMusic(audioPlayer);
-			// }
 		});
 
     });
