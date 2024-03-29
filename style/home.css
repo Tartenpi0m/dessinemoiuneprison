@@ -65,7 +65,7 @@
     white-space: nowrap; 
 }
 .home_text {
-    overflow-y: hidden;
+    overflow-y: scroll;
     text-align: justify;
     margin-left: 30px; margin-right: 30px;
     margin-top: 60px;
