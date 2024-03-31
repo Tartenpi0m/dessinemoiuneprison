@@ -136,6 +136,8 @@
 
     <script>
 
+        localStorage.setItem("access", "denied");
+
         var counter = 0;
         var password = "";
 
@@ -175,13 +177,14 @@
 
                     if (counter === (password_length + space_number)) {
                         counter = 0;
-                        sessionStorage.setItem("try", "yes");
+                        //sessionStorage.setItem("try", "yes");
                         const hashedPassword = hash(password);
                         link = "./static/" + hashedPassword + ".html";
                         
                         fetch(link)
                             .then(res => {
                                 if (res.ok) {
+                                    localStorage.setItem("access", "allowed");
                                     window.location.href = link;
                                 } else {
                                     let warning_el = document.getElementById("warning");

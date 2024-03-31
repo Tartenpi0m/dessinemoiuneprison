@@ -21,13 +21,16 @@ async function loadPage(page) {
 		})
 }
 
+if (localStorage.getItem("access") == "denied" || localStorage.getItem("access") == null) {
+	window.location.href = "../index.html";
+}
 
 
 
 // ---------- COMMUN ELEMENTS TO ALL PAGES ------------
 window.addEventListener('DOMContentLoaded', function() {
 
-	sessionStorage.setItem("try", "no");
+	//sessionStorage.setItem("try", "no");
 
 
 
