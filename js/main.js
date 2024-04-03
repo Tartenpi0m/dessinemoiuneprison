@@ -142,7 +142,7 @@ window.addEventListener('DOMContentLoaded', function() {
 	});
 
 	// Change time by clicking on progress bar
-	let progressBar = document.getElementById("player_progression_bar_background");
+	let progressBar = document.getElementById("player_progression_bar_tactile");
 	progressBar.addEventListener("click", function(e) {
 		let rect = progressBar.getBoundingClientRect();
 		let x = e.clientX - rect.left;

@@ -53,6 +53,15 @@
     border-bottom-right-radius: 5px;
 }
 
+#player_progression_bar_tactile {
+    position: absolute;
+    width: 100%;
+    height: calc(5*var(--player-progress-bar-height));
+    top: calc(-2*var(--player-progress-bar-height));
+    background-color: transparent;
+    z-index: 50;
+}
+
 #player_secondary_container {
     display: flex;
     justify-content: space-between;
