@@ -202,6 +202,8 @@ window.addEventListener('subload_podcasts', function() {
 		let audioTitle = bar.getAttribute("title");
 		if(localStorage.getItem(audioTitle + "_time")) {
 			bar.style.width = localStorage.getItem(audioTitle + "_time") / localStorage.getItem(audioTitle + "_duration") * 100 + "%";
+		} else {
+			bar.style.width = "0%";
 		}
 	});
 
