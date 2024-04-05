@@ -37,7 +37,7 @@
 
 
 .rs_item_list {
-    display: block;
+    display: none;
 }
 
 .rs_item {
