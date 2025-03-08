@@ -109,12 +109,19 @@ body {
     display: flex;
     align-items: center;
 }
+
+.header_menu_item:hover {
+    background-color: var(--back2);
+}
+
 .header_menu_sep {
     width: 100%;
     height: 1px;
     background-color: rgb(227, 228, 227);
 
 }
+
+
 
 .h1 {
     display: inline-block;
