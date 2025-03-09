@@ -290,3 +290,18 @@ window.addEventListener('subload_home', function() {
 		})
 	})
 });
+
+///// ------------------ RESSOURCE PAGE ------------------ /////
+window.addEventListener('subload_ressource', function() {
+
+	let rs_list = document.querySelectorAll(".rs_head");
+	rs_list.forEach(rs => {
+		rs.addEventListener('click', () => {
+			if (rs.nextElementSibling.style.display === "none") {
+				rs.nextElementSibling.style.display = "block";
+			} else {
+				rs.nextElementSibling.style.display = "none";
+			}
+		})	
+	})
+});
