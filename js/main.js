@@ -163,31 +163,46 @@ window.addEventListener('DOMContentLoaded', function() {
 ///// ------------------ PODCASTS PAGE ------------------ /////
 window.addEventListener('subload_podcasts', function() {
 
-	// --------CARD BEHAVIOR--------
-	let cards = document.querySelectorAll(".podcast_card");
-	// transfomr list of card in .querySelector(".podcast_innercard").querySelector(".podcast_content") elements
-	cards.forEach(card => {
-		let podcast_text_info = card.querySelector(".card_upper").querySelector(".podcast_text_info");
-		let card_lower = card.querySelector(".card_lower");
-		
-		podcast_text_info.addEventListener('click', () => {
-			let cardHeight = window.getComputedStyle(card).height;
-			if (cardHeight === "120px") {
-				card.style.height = "fit-content";
-			} else {
-				card.style.height = "120px";
-			}
-		});
 
-		card_lower.addEventListener('click', () => {
-			let cardHeight = window.getComputedStyle(card).height;
-			if (cardHeight === "120px") {
-				card.style.height = "fit-content";
+	//--------ITEM BEHAVIOR---------
+
+	let items = document.querySelectorAll(".lower_item");
+	items.forEach(item => {
+		item.addEventListener('click', () => {
+			if (item.style.height === "auto") {
+				item.style.height = "30px"
 			} else {
-				card.style.height = "120px";
+				item.style.height = "auto"
 			}
-		});
-	});
+
+		})
+	})
+
+	// --------CARD BEHAVIOR--------	
+	// let cards = document.querySelectorAll(".podcast_card");
+	// // transfomr list of card in .querySelector(".podcast_innercard").querySelector(".podcast_content") elements
+	// cards.forEach(card => {
+	// 	let podcast_text_info = card.querySelector(".card_upper").querySelector(".podcast_text_info");
+	// 	let card_lower = card.querySelector(".card_lower");
+		
+	// 	podcast_text_info.addEventListener('click', () => {
+	// 		let cardHeight = window.getComputedStyle(card).height;
+	// 		if (cardHeight === "120px") {
+	// 			card.style.height = "fit-content";
+	// 		} else {
+	// 			card.style.height = "120px";
+	// 		}
+	// 	});
+
+	// 	card_lower.addEventListener('click', () => {
+	// 		let cardHeight = window.getComputedStyle(card).height;
+	// 		if (cardHeight === "120px") {
+	// 			card.style.height = "fit-content";
+	// 		} else {
+	// 			card.style.height = "120px";
+	// 		}
+	// 	});
+	// });
 
 
 
@@ -295,12 +310,16 @@ window.addEventListener('subload_home', function() {
 window.addEventListener('subload_ressource', function() {
 
 	let rs_list = document.querySelectorAll(".rs_head");
+	rs_list.forEach(rs => {rs.nextElementSibling.style.display = "none"})
+
 	rs_list.forEach(rs => {
 		rs.addEventListener('click', () => {
+			console.log("clicked")
 			if (rs.nextElementSibling.style.display === "none") {
 				rs.nextElementSibling.style.display = "block";
 			} else {
 				rs.nextElementSibling.style.display = "none";
+				console.log(rs.nextElementSibling)
 			}
 		})	
 	})
