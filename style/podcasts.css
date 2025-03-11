@@ -32,8 +32,12 @@
 .pod_item {
     display: block;
     border-bottom: 1px solid #b8b8b8;
-    padding: 10px 20px;
+    padding: 15px 20px; 
 }
+
+/* .pod_item::after {
+    box-shadow: inset 0px -20px 20px 0px red;
+} */
 
 .upper_item {
     display: flex;
@@ -45,7 +49,7 @@
 
 .pod_image {
     height: var(--image-height);
-    width: var(--image-height);
+    width: var(--image-width);
 }
 img {
     height: var(--image-height);
@@ -71,7 +75,6 @@ img {
 .h4 {
     font-size: 0.9rem;
     font-style: italic;
-    margin-bottom: 10px;
 }
 
 .h5 {
@@ -81,6 +84,7 @@ img {
 .h6 {
     font-size: 0.8rem;
     font-style: italic;
+    color: rgb(124, 124, 124)
 }
 
 .audio_block {
@@ -97,7 +101,6 @@ img {
 }
 
 .play_button {
-    margin-left: 12px;
     font-size: 1.5rem;
 }
 

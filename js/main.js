@@ -165,12 +165,13 @@ window.addEventListener('subload_podcasts', function() {
 
 
 	//--------ITEM BEHAVIOR---------
+	let item_initial_height = document.querySelector(".lower_item").style.height
 
 	let items = document.querySelectorAll(".lower_item");
 	items.forEach(item => {
 		item.addEventListener('click', () => {
 			if (item.style.height === "auto") {
-				item.style.height = "30px"
+				item.style.height = item_initial_height
 			} else {
 				item.style.height = "auto"
 			}
@@ -314,7 +315,6 @@ window.addEventListener('subload_ressource', function() {
 
 	rs_list.forEach(rs => {
 		rs.addEventListener('click', () => {
-			console.log("clicked")
 			if (rs.nextElementSibling.style.display === "none") {
 				rs.nextElementSibling.style.display = "block";
 			} else {

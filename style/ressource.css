@@ -10,7 +10,6 @@
     padding: 0;
     border: 0;
     width: 100%;
-    height: 200px;
 
 }
 
@@ -60,7 +59,7 @@ img {
 }
 
 .rs_text {
-    height: calc(var(--image-height) - 10px);
+    height: calc(var(--image-height) + 70px);
     width: calc(100% - var(--image-height));
     display: flex;
     flex-direction: column;
@@ -70,11 +69,13 @@ img {
 }
 
 .rs_text_title {
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+
 }
 
 .rs_text_description {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
 }
 
 .rs_text_info {
@@ -88,7 +89,7 @@ img {
 
 .rs_info_source {
     color: black;
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     text-decoration-line: underline;
 }
 
@@ -100,10 +101,10 @@ img {
 }
 
 .rs_medium_icon {
-    font-size: 0.5rem;
+    font-size: 0.7rem;
     margin-right: 10px;
 }
 .rs_medium_time {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
     margin-right: 20px;
 }
