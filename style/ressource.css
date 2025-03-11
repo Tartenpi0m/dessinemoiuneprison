@@ -59,7 +59,7 @@ img {
 }
 
 .rs_text {
-    height: calc(var(--image-height) + 70px);
+    /* height: calc(var(--image-height) + 70px); */
     width: calc(100% - var(--image-height));
     display: flex;
     flex-direction: column;
@@ -76,6 +76,8 @@ img {
 
 .rs_text_description {
     font-size: 0.9rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .rs_text_info {
