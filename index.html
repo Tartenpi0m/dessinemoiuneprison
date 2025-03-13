@@ -179,6 +179,7 @@
                         counter = 0;
                         //sessionStorage.setItem("try", "yes");
                         const hashedPassword = hash(password);
+                        console.log(hashedPassword)
                         link = "./static/" + hashedPassword + ".html";
                         
                         fetch(link)

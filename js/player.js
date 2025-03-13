@@ -66,8 +66,8 @@ export function hidePlayer() {
     let realBody = document.getElementById("real_body");
     realBody.style.height = "calc(100vh - 70px)"
 
-    let fake_player = document.getElementById("fake_player");
-    if (fake_player != null) fake_player.style.display = "none";
+    // let fake_player = document.getElementById("fake_player");
+    // if (fake_player != null) fake_player.style.display = "none";
 }
 
 export function showPlayer() {
@@ -77,8 +77,8 @@ export function showPlayer() {
     let realBody = document.getElementById("real_body");
     realBody.style.height = "calc(100vh - 140px)"
 
-    let fake_player = document.getElementById("fake_player");
-    if (fake_player != null) fake_player.style.display = "block";
+    // let fake_player = document.getElementById("fake_player");
+    // if (fake_player != null) fake_player.style.display = "block";
 }
 
 export function convertToHHSS(number) {

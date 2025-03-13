@@ -164,19 +164,43 @@ window.addEventListener('DOMContentLoaded', function() {
 window.addEventListener('subload_podcasts', function() {
 
 
+
+
 	//--------ITEM BEHAVIOR---------
 	let item_initial_height = document.querySelector(".lower_item").style.height
 
 	let items = document.querySelectorAll(".lower_item");
+	var item_count = 0;
 	items.forEach(item => {
+
+		item_count += 1;
+		console.log(item)
+		let h5 = item.querySelector(".h5")
+		let h6 = item.querySelector(".h6")
+
+		sessionStorage.setItem("item_"+item_count, h5.innerHTML)
+		h5.innerHTML = h5.innerHTML.split(" ").splice(0,13).join(" ") + "..."
+		h6.style.display = "none"
+
 		item.addEventListener('click', () => {
-			if (item.style.height === "auto") {
-				item.style.height = item_initial_height
-			} else {
-				item.style.height = "auto"
+			if (h6.style.display === "none") {
+				h5.innerHTML = sessionStorage.getItem("item_"+item_count)
+				h6.style.display = "block"
+			} else if (h6.style.display === "block") {
+				h5.innerHTML = h5.innerHTML.split(" ").splice(0,13).join(" ") + "..."
+				h6.style.display = "none"
 			}
 
 		})
+
+		// item.addEventListener('click', () => {
+		// 	if (item.style.height === "auto") {
+		// 		item.style.height = item_initial_height
+		// 	} else {
+		// 		item.style.height = "auto"
+		// 	}
+
+		// })
 	})
 
 	// --------CARD BEHAVIOR--------	

@@ -165,7 +165,7 @@ body {
 }
 
 #fake_player {
-    display: block;
+    display: None;
     width: 100%;
     height: calc(var(--player-height));
     opacity: 0;
