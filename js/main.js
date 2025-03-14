@@ -100,6 +100,13 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 	})
 
+	let body = this.document.querySelector("#real_body")
+	body.addEventListener('click', () => {
+		let header_menu_dev = document.querySelector("#header_menu_dev");
+		if (header_menu_dev.style.display === "flex") {
+			header_menu_dev.style.display = "none";
+		}
+	})
 	
 	
 
