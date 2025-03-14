@@ -26,6 +26,30 @@ if (localStorage.getItem("access") == "denied" || localStorage.getItem("access")
 }
 
 
+function calculateFitCharacters(div) {
+
+    // Get the computed style of the div  
+    const style = window.getComputedStyle(div);
+    
+    // Get the width of the div (subtract padding)
+    const divWidth = div.offsetWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+    
+    // Create a temporary canvas to measure text width  
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('2d');
+    
+    // Set the font style to match the div  
+    context.font = style.font;
+
+    // Measure the width of a character (using 'M' as an average character)
+    const characterWidth = context.measureText('asq').width / 3;
+
+    // Calculate the number of characters that fit in the width of the div  
+    const fitCharacters = Math.floor(divWidth / characterWidth);
+
+    return fitCharacters;
+}
+
 
 // ---------- COMMUN ELEMENTS TO ALL PAGES ------------
 window.addEventListener('DOMContentLoaded', function() {
@@ -169,25 +193,35 @@ window.addEventListener('subload_podcasts', function() {
 	//--------ITEM BEHAVIOR---------
 	let item_initial_height = document.querySelector(".lower_item").style.height
 
-	let items = document.querySelectorAll(".lower_item");
+	let pod_items = document.querySelectorAll(".pod_item");
 	var item_count = 0;
-	items.forEach(item => {
+	pod_items.forEach(pod_item => {
 
-		item_count += 1;
-		console.log(item)
+		let item = pod_item.querySelector(".lower_item")
+		let key_name = pod_item.querySelector(".upper_item").querySelector(".pod_card").querySelector(".h3").innerHTML
+
+		// console.log(item)
 		let h5 = item.querySelector(".h5")
 		let h6 = item.querySelector(".h6")
 
-		sessionStorage.setItem("item_"+item_count, h5.innerHTML)
-		h5.innerHTML = h5.innerHTML.split(" ").splice(0,13).join(" ") + "..."
+		sessionStorage.setItem("item_"+key_name, h5.innerHTML)
+		let max_character = calculateFitCharacters(h5)
+		console.log(max_character)
+		// h5.innerHTML = h5.innerHTML.split(" ").splice(0,13).join(" ") + "..."
+		h5.innerHTML = h5.innerHTML.slice(0, 2*max_character - 4) + '...'
 		h6.style.display = "none"
 
 		item.addEventListener('click', () => {
 			if (h6.style.display === "none") {
-				h5.innerHTML = sessionStorage.getItem("item_"+item_count)
+				// item = pod_item.querySelector(".lower_item")
+				let key_name = item.parentElement.querySelector(".upper_item").querySelector(".pod_card").querySelector(".h3").innerHTML
+				console.log(key_name)	
+				h5.innerHTML = sessionStorage.getItem("item_"+key_name)
 				h6.style.display = "block"
 			} else if (h6.style.display === "block") {
-				h5.innerHTML = h5.innerHTML.split(" ").splice(0,13).join(" ") + "..."
+				// h5.innerHTML = h5.innerHTML.split(" ").splice(0,13).join(" ") + "..."
+				h5.innerHTML = h5.innerHTML.slice(0, 2*max_character - 4) + '...'
+
 				h6.style.display = "none"
 			}
 
