@@ -209,7 +209,6 @@ window.addEventListener('subload_podcasts', function() {
 
 		sessionStorage.setItem("item_"+key_name, h5.innerHTML)
 		let max_character = calculateFitCharacters(h5)
-		console.log(max_character)
 		// h5.innerHTML = h5.innerHTML.split(" ").splice(0,13).join(" ") + "..."
 		h5.innerHTML = h5.innerHTML.slice(0, 2*max_character - 4) + '...'
 		h6.style.display = "none"
@@ -287,7 +286,7 @@ window.addEventListener('subload_podcasts', function() {
 	// add event listener to each play button of each cards
 	let button_list = document.querySelectorAll(".play_button");
 	button_list.forEach(play_button => {
-		console.log("Adding event listener to play button : " + play_button.getAttribute("title") + " with source : " + play_button.getAttribute("src"));
+		// console.log("Adding event listener to play button : " + play_button.getAttribute("title") + " with source : " + play_button.getAttribute("src"));
 		play_button.addEventListener("click", () => {
 
 			let audioSource = play_button.getAttribute("src");
@@ -382,7 +381,7 @@ window.addEventListener('subload_ressource', function() {
 				rs.nextElementSibling.style.display = "block";
 			} else {
 				rs.nextElementSibling.style.display = "none";
-				console.log(rs.nextElementSibling)
+				// console.log(rs.nextElementSibling)
 			}
 		})	
 	})
