@@ -66,13 +66,10 @@ window.addEventListener('DOMContentLoaded', function() {
 
 	else {
 		// Code to execute if "currentPage" exists in localStorage
-		//loadPage(localStorage.getItem("currentPage"));
+		loadPage(localStorage.getItem("currentPage"));
 	}
 
     loadPage(localStorage.getItem("currentPage"));
-	//loadPage("home");
-	//loadPage("podcasts");	
-
 
 	let menu_item_home = document.querySelector("#menu_item_home");
 	menu_item_home.addEventListener('click', () => {
@@ -350,10 +347,12 @@ window.addEventListener('subload_podcasts', function() {
 
 	// Live time update for progress bar (using event listener)
 	audioPlayer.addEventListener('timeupdate', () => {
-		try {let progressBarCard = document.querySelector(".podcast_time_bar[title='" + localStorage.getItem("currentMusicTitle") + "']");
-		let progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-		progressBarCard.style.width = progress + "%";}
-		catch (error) {console.log("No podcast bar found for this podcast"); console.log(localStorage.getItem("currentMusicTitle"))}
+		if (localStorage.getItem("currentPage") === 'podcasts') {
+			try {let progressBarCard = document.querySelector(".podcast_time_bar[title='" + localStorage.getItem("currentMusicTitle") + "']");
+			let progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+			progressBarCard.style.width = progress + "%";}
+			catch (error) {console.log("No podcast bar found for this podcast"); console.log(localStorage.getItem("currentMusicTitle"))}
+		}
 	
 	})
 })
