@@ -100,6 +100,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		}
 	})
 
+	// Menu dissapear when click somewhere else on the page
 	let body = this.document.querySelector("#real_body")
 	body.addEventListener('click', () => {
 		let header_menu_dev = document.querySelector("#header_menu_dev");
@@ -201,9 +202,7 @@ window.addEventListener('subload_podcasts', function() {
 	let item_initial_height = document.querySelector(".lower_item").style.height
 
 	let pod_items = document.querySelectorAll(".pod_item");
-	var item_count = 0;
 	pod_items.forEach(pod_item => {
-
 		let item = pod_item.querySelector(".lower_item")
 		let key_name = pod_item.querySelector(".upper_item").querySelector(".pod_card").querySelector(".h3").innerHTML
 
