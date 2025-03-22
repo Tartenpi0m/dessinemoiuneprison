@@ -379,6 +379,7 @@ window.addEventListener('subload_ressource', function() {
 		rs.addEventListener('click', () => {
 			if (rs.nextElementSibling.style.display === "none") {
 				rs_list.forEach(rs => {rs.nextElementSibling.style.display = "none"})
+				window.scrollTo(0, 0);
 				rs.nextElementSibling.style.display = "block";
 
 
