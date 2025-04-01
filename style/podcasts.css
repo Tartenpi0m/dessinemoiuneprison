@@ -54,7 +54,8 @@
 }
 img {
     height: var(--image-height);
-    border-radius: 5px;
+    border-radius: 0px;
+    margin-left: 10px;
 }
 
 .pod_card {
@@ -69,7 +70,8 @@ img {
 
 
 .h3 {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
+    font-weight: 500;
     margin-bottom: 0px;
 }
 
@@ -107,7 +109,7 @@ p {
 }
 
 .play_button {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .podcast_time_bar_container {
